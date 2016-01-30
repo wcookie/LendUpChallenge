@@ -1,0 +1,33 @@
+# Wyatt's LendUp Challenge
+
+## Requirements
+
+The requirements for my project are Python 3.4.3 and pip.
+
+## Setup
+
+The easiest way to run my project would be with a virtual environment. Once you have this virtual environment set up with python 3.4.3, you can go the directory containing requirements.txt and type pip install -r requirements.txt in order to install the project's dependencies.
+
+## Django Setup
+
+run python manage.py migrate in order to get the database migrated, then run python manage.py runserver to run a local server on port 8000.
+
+## Ngrok Setup
+
+Ngrok is a very easy tool to get a local server connected with the web (and in this case Twilio). Once Ngrok is downloaded, it is as easy as typing ./ngrok http 8000 in order to get your django server connected to the web (and hence Twilio). 
+
+## Project Setup
+
+Once you have your Ngrok address, you want to put http://ngrokaddress.io/phonebuzz/gather into yout Twilio phone number's Phone Call get component.  In addition, replace the specific instance of ngrok I used for my url_string's in phonebuzz/views.py with your specific instance in order to get my project working properly wtih Twilio. Also in lendup/settings.py change the TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN.  
+
+## Using my Project
+
+Go to ngrokaddress.io/phonebuzz/call to instantiate a new call/delay and also to see the listing of past calls page.  On the listing page press the call button to re-make that call and play some Phone Buzz!
+
+## Notes
+
+I did not use an asynchronous task worker like celery.py in order to use the delay, and instead just used a sleep function.  If I had more time I would have taken time to celery, but I unfortunately had 3 midterms this past week so that wasn't entirely possible. 
+
+If you have any more questions please eamil me at wyattcook2018@u.northwestern.edu
+
+Thanks so much for the opportunity!

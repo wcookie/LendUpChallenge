@@ -1,0 +1,21 @@
+<html>
+
+
+<body>
+	<table>
+	{% for call in calls %}
+		<tr><td>{{call.number}}</td>
+			<td>{{call.phoneNumber}}</td>
+			<td>
+			<a href="{% url 'phonebuzz:repeat' call.pk %}">
+				<button type="button">
+					Call
+				</button>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+</body>
+
+
+</html>

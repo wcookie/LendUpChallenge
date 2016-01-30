@@ -12,7 +12,10 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-
+#celery stuff here
+import djcelery
+djcelery.setup_loader()
+BROKER_URL = 'django://'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -37,7 +40,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_twilio',
+    'django_twilio', #django-twilio
+    'crispy_forms', #crispy forms for prettier forms
+    'phonebuzz',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,7 +61,7 @@ ROOT_URLCONF = 'lendup.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
